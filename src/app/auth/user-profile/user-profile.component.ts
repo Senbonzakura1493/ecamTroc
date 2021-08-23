@@ -19,7 +19,8 @@ export class UserProfileComponent implements OnInit {
   profile = true;
   orders = false;
   previous = false;
-
+  collaborations : any;
+  user_id:any;
   
   constructor(public router: Router,
     public fb: FormBuilder,
@@ -28,11 +29,24 @@ export class UserProfileComponent implements OnInit {
       this.authService.isLoadingSubject.next(true);
       this.authState.userAuthState.subscribe(async(data:boolean)=>{
         this.isAuth$ = data;
-        console.log(this.authService.profileInfos$)
+        this.authService.getNextValueProfileInfos().subscribe(data=>{
+          if(data != null){
+            this.user_id=data.id;
+            this.authService.getUserCollaborations(this.user_id).subscribe(data=>{
+              if(data != null){
+              this.collaborations = data.body;
+              console.log(data)
+            }
+            })
+          }
+
+        })
+        
       })
     }
 
   ngOnInit(): void {
+    
   }
 
   onChangeTabToOrders(){

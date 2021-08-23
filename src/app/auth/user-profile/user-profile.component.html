@@ -16,46 +16,45 @@
         </div>
         
         <div *ngIf="orders==true">
-          <div class="col-sm-3 col-lg-3">
-            <div class="shop-item">
-              <div class="card" >
-                <div class="card-body" style="background-color: rgb(172, 171, 164)">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Cras justo odio</li>
-                  <li class="list-group-item">Dapibus ac facilisis in</li>
-                  <li class="list-group-item">Vestibulum at eros</li>
-                </ul>
-                <div class="card-body">
-                  <button type="submit" class="btn btn-outline-dark my-2 my-sm-0" >Détails</button>
-                </div>
+          <h4>Collaborations acceptées</h4>
+          <div class="col-sm-3 col-lg-3" *ngFor="let collab of collaborations.collaborations_acceptees">
+          <div class="shop-item">
+            <div class="card" >
+              <div class="card-body" style="background-color: rgb(172, 171, 164)">
+                <h5 class="card-title">{{collab.course_id}}</h5>
+                <p class="card-text">{{collab.description}}</p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">{{collab.hours}} heures</li>
+                <li class="list-group-item">Statut :  {{collab.status}}</li>
+                <li class="list-group-item">Année d'étude : {{collab.schoolyear_id}}</li>
+              </ul>
+              <div class="card-body">
+                <button type="submit" class="btn btn-outline-dark my-2 my-sm-0" >Détails </button>
               </div>
             </div>
           </div>
-          <button class="btn btn-round btn-b" (click)="onShowPreviousOrders()">Voir historique des collaborations</button>
+        </div>
           <hr class="divider-w  mt-10 mb-20">
-          <div *ngIf="previous== true">
-            <div class="col-sm-3 col-lg-3" >
-              <div class="shop-item">
-                <div class="card" >
-                  <div class="card-body" style="background-color: rgb(172, 171, 164)">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  </div>
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Cras justo odio</li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Vestibulum at eros</li>
-                  </ul>
-                  <div class="card-body">
-                    <button type="submit" class="btn btn-outline-dark my-2 my-sm-0" >Détails</button>
-                  </div>
-                </div>
+          <h4>Collaborations demandées</h4>
+          
+          <div class="col-sm-3 col-lg-3" *ngFor="let collab of collaborations.collaborations_demandees">
+          <div class="shop-item">
+            <div class="card" >
+              <div class="card-body" style="background-color: rgb(172, 171, 164)">
+                <h5 class="card-title">{{collab.course_id}}</h5>
+                <p class="card-text">{{collab.description}}</p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">{{collab.hours}} heures</li>
+                <li class="list-group-item">Statut :  {{collab.status}}</li>
+                <li class="list-group-item">Année d'étude : {{collab.schoolyear_id}}</li>
+              </ul>
+              <div class="card-body">
+                <button type="submit" class="btn btn-outline-dark my-2 my-sm-0" >Détails </button>
               </div>
             </div>
-            <button class="btn btn-round btn-b" (click)="onHidePreviousOrders()">Fermer</button>  
+          </div>
         </div>
         </div>
     </div>

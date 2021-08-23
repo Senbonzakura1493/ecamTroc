@@ -63,7 +63,10 @@ export class AuthService {
 
       return this.profileInfoSubject.asObservable(); }
 
-  
+  // Access user profile
+  getUserCollaborations(id): Observable<any> {
+    return this.http.get('http://127.0.0.1:8000/api/collaborations/'+id,{observe: 'response'});
+  }
     
 }
 

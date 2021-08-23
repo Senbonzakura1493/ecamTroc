@@ -46,20 +46,5 @@ export class ItemComponent implements OnInit {
     this.BasketService.addToCart(item , this.selected_size);
   }
 
-  verifySizeAvailability(size){
-    this.itemService.APIgetItem(this.id).subscribe((data:any)=>{
-      if(data){
-        this.item = data.body.item;
-        if (this.item[size]== null){
-          console.log('no more')
-          
-        }
-        else {
-          console.log('still available')
-          this.selected_size = size;
-        }
-      }
-    }) 
-
-  }
+ 
 }

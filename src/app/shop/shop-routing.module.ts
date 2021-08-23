@@ -10,7 +10,7 @@ const approutes: Routes = [{
   path : '',
   component : LayoutComponent, 
   children : [
-    {path: 'boutique', component: BoutiqueComponent},
+    {path: 'collaborations', component: BoutiqueComponent},
     {path: 'items/:idItem', component: ItemComponent},
     {path: 'checkout', 
       component: CheckoutComponent},

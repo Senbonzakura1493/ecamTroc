@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RegisterComponent } from './register.component';
+import { RouterModule, } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { FormBuilder, FormsModule } from '@angular/forms';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
@@ -8,7 +11,13 @@ describe('RegisterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RegisterComponent ]
+      declarations: [ RegisterComponent ],
+      imports: [
+        RouterModule,
+        HttpClientModule,
+        RouterTestingModule,
+        FormsModule
+      ],
     })
     .compileComponents();
   });
@@ -18,6 +27,7 @@ describe('RegisterComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+  
 
   it('should create', () => {
     expect(component).toBeTruthy();

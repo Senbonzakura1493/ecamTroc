@@ -1,14 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 import { ChangePasswordComponent } from './change-password.component';
-
+import { RouterTestingModule } from "@angular/router/testing";
 describe('ChangePasswordComponent', () => {
   let component: ChangePasswordComponent;
   let fixture: ComponentFixture<ChangePasswordComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ChangePasswordComponent ]
+      declarations: [ ChangePasswordComponent ],
+      imports: [
+        RouterModule,
+        HttpClientModule,
+        RouterTestingModule.withRoutes([])
+      ],
     })
     .compileComponents();
   });

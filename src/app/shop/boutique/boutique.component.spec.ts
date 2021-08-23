@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BoutiqueComponent } from './boutique.component';
@@ -8,7 +9,8 @@ describe('BoutiqueComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BoutiqueComponent ]
+      declarations: [ BoutiqueComponent ],
+      imports:[HttpClientModule]
     })
     .compileComponents();
   });

@@ -15,7 +15,7 @@ import {BoutiqueComponent}from './boutique/boutique.component'
 import {MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dialog';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { PanierComponent } from './checkout/panier/panier.component';
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ItemComponent} from './item/item.component';
 @NgModule({
   declarations: [ShopComponent,
@@ -33,6 +33,7 @@ import { ItemComponent} from './item/item.component';
   imports: [
     CommonModule,
     RouterModule,
+    HttpClientModule,
     ShopRoutingModule,
     AuthModule
  

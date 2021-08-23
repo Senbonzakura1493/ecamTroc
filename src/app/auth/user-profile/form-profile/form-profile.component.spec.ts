@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 import { FormProfileComponent } from './form-profile.component';
 
 describe('FormProfileComponent', () => {
@@ -8,7 +9,12 @@ describe('FormProfileComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormProfileComponent ]
+      declarations: [ FormProfileComponent ],
+      imports: [
+        RouterModule,
+        HttpClientModule,
+       
+      ],
     })
     .compileComponents();
   });

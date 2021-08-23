@@ -6,7 +6,7 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
       ],
       declarations: [
         AppComponent
@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'lwandco'`, () => {
+  it(`should have as title 'ecamtroc'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('lwandco');
+    expect(app.title).toEqual('ecamtroc');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('lwandco app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('ecamtroc app is running!');
   });
 });

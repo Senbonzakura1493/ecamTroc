@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { ForgotPasswordComponent } from './forgot-password.component';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+
 describe('ForgotPasswordComponent', () => {
   let component: ForgotPasswordComponent;
   let fixture: ComponentFixture<ForgotPasswordComponent>;
@@ -16,9 +17,10 @@ describe('ForgotPasswordComponent', () => {
         RouterModule,
         HttpClientModule,
         RouterTestingModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
         ],
-        providers: [  FormBuilder,ReactiveFormsModule],
+        providers: [FormsModule,FormBuilder,ReactiveFormsModule],
     })
     .compileComponents();
   });

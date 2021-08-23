@@ -2,7 +2,7 @@
   <span class="sr-only">Loading...</span>
 </div>
 <form class="form" [formGroup]="profileForm" *ngIf="!(isLoading$ | async)">
-    <div class="alert alert-danger" *ngIf="user_infos.email_verified_at == null">
+    <div class="alert alert-danger" *ngIf="user_infos?.ecamtroc == null">
       <strong>Veuillez valider votre email pour mieux sécuriser votre compte.</strong> <a href="#"> ici </a>
     </div>
     <div class="form-group">

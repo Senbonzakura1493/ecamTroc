@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 import { ChangePasswordComponent } from './change-password.component';
 import { RouterTestingModule } from "@angular/router/testing";
 import { FormBuilder } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
 describe('ChangePasswordComponent', () => {
   let component: ChangePasswordComponent;
   let fixture: ComponentFixture<ChangePasswordComponent>;
@@ -17,7 +16,7 @@ describe('ChangePasswordComponent', () => {
         HttpClientModule,
         RouterTestingModule.withRoutes([])
       ],
-      providers: [ MatDialogRef, FormBuilder],
+      providers: [ FormBuilder],
     })
     .compileComponents();
   });

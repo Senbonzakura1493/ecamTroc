@@ -6,7 +6,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { FormBuilder } from '@angular/forms';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
-import { MatDialogRef } from '@angular/material/dialog';
+
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 
 
@@ -23,7 +23,7 @@ describe('FormProfileComponent', () => {
         BrowserDynamicTestingModule,
         RouterTestingModule
       ],
-      providers: [ MatDialogRef,FormBuilder],
+      providers: [FormBuilder],
       schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
     })
     .compileComponents();

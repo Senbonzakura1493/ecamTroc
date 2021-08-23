@@ -16,7 +16,7 @@ export class FormProfileComponent implements OnInit {
   @Input() fromCheckout :boolean;
   profileForm: FormGroup; 
   user_infos :any;
-  email_verified_at=null;
+ 
   constructor(public router: Router,
     public fb: FormBuilder,
     public authService: AuthService , public authState : AuthStateService) { 

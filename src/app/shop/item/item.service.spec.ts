@@ -3,6 +3,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { ItemService } from './item.service';
 import { ToastInjector, ToastrModule, TOAST_CONFIG } from 'ngx-toastr';
+import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
+import { InjectionToken } from '@angular/core';
 
 describe('ItemService', () => {
   let service: ItemService;
@@ -13,8 +15,9 @@ describe('ItemService', () => {
         RouterModule,
         HttpClientModule,
         ToastrModule,
-        ToastInjector
+        BrowserDynamicTestingModule
         ],
+      providers:[ToastrModule,InjectionToken,ToastInjector]
 
     });
     service = TestBed.inject(ItemService);

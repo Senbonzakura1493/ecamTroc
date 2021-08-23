@@ -18,6 +18,7 @@ describe('ForgotPasswordComponent', () => {
         RouterTestingModule,
         FormsModule
         ],
+        providers: [  FormBuilder],
     })
     .compileComponents();
   });

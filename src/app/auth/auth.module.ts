@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
@@ -25,7 +25,8 @@ import { FormProfileComponent } from './user-profile/form-profile/form-profile.c
     ReactiveFormsModule,
     FormProfileComponent,
     LoginComponent, LogoutComponent, RegisterComponent, ForgotPasswordComponent, ChangePasswordComponent
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
  
 })
 export class AuthModule { }

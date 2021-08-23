@@ -2,6 +2,13 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FormProfileComponent } from './form-profile.component';
+import { RouterTestingModule } from '@angular/router/testing';
+
+import { FormBuilder } from '@angular/forms';
+import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
+import { MatDialogRef } from '@angular/material/dialog';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
+
 
 describe('FormProfileComponent', () => {
   let component: FormProfileComponent;
@@ -13,8 +20,11 @@ describe('FormProfileComponent', () => {
       imports: [
         RouterModule,
         HttpClientModule,
-       
+        BrowserDynamicTestingModule,
+        RouterTestingModule
       ],
+      providers: [ MatDialogRef,FormBuilder],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   });

@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 import { ItemComponent } from './item.component';
 
@@ -12,7 +12,9 @@ describe('ItemComponent', () => {
       declarations: [ ItemComponent ],
       imports:[
         ToastrModule
-      ]
+      ],
+      providers:[ToastrService]
+    
     })
     .compileComponents();
   });

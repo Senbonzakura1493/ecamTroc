@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder, FormsModule } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
@@ -13,8 +13,9 @@ describe('LoginComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ LoginComponent ],
-      imports:[RouterTestingModule,FormsModule,BrowserDynamicTestingModule],
+      imports:[RouterTestingModule,FormsModule,BrowserDynamicTestingModule,MatDialogModule],
       providers: [ MatDialogRef, FormBuilder],
+
     })
     .compileComponents();
   });

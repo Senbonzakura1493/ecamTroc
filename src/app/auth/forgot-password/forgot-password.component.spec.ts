@@ -3,7 +3,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterTestingModule } from "@angular/router/testing";
 import { RouterModule } from '@angular/router';
 import { ForgotPasswordComponent } from './forgot-password.component';
-import { FormBuilder, FormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 describe('ForgotPasswordComponent', () => {
   let component: ForgotPasswordComponent;
@@ -18,7 +18,7 @@ describe('ForgotPasswordComponent', () => {
         RouterTestingModule,
         FormsModule
         ],
-        providers: [  FormBuilder],
+        providers: [  FormBuilder,ReactiveFormsModule],
     })
     .compileComponents();
   });

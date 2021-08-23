@@ -1,0 +1,106 @@
+<!doctype html>
+<div class="page-loader" *ngIf="(isLoading$ |async)">
+  <div class="loader">Loading...</div>
+</div>
+<div style="background-color: whitesmoke; padding-top : 110px;" *ngIf='!(isLoading$ | async)'>
+<div class="row d-none d-lg-block">
+
+<div class="container" style="padding-top:15px;">
+  <div class="row">
+    <div class="col"  style="text-align:left; max-width:20%;" >
+      <h4 class="font-alt">{{item.nom}} </h4><br/>
+    </div>
+    <div class="col" >
+      <div class="row">
+      <div  class="col" style="text-align:left; width:70%;" >
+        <button  class="btn btn-outline-dark btn-xs" (click)="verifySizeAvailability('xs')" >1h</button>&nbsp;
+        <button  class="btn btn-outline-dark btn-xs" (click)="verifySizeAvailability('s')"  >2h</button>&nbsp;
+        <button  class="btn btn-outline-dark btn-xs" (click)="verifySizeAvailability('m')" >3h</button>&nbsp;
+        <button  class="btn btn-outline-dark btn-xs " (click)="verifySizeAvailability('l')" >4h</button>&nbsp;
+        
+      </div>
+      <div class="col" style="text-align:center; width:10%;" >
+        <span *ngFor= "let item of items"  >
+          <a class="dot" href="/#" style="background-color: black;"></a>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </span>
+      </div>   
+      <div  class="col" style="text-align:center; width:20%;">
+        <button class="btn btn-md  btn-round btn-b" style="padding-top: 5px;" (click)="addToCart(item)" >Match</button>&nbsp;<br>
+      </div>
+    </div>
+    </div>
+ </div>
+ <hr class="solid">
+</div>
+</div>
+
+
+<div class="d-lg-none">
+    <div class="container" style=" background-color :white ; padding-top:15px;">
+    <div class="row">
+      <div class="col" style="text-align:left;" >
+        <div class="row">
+        <div  class="col" >
+          <button  class=" button-size  btn-outline-dark  titan-title-size-1" >XS</button>&nbsp;
+          <button  class=" button-size  btn-outline-dark titan-title-size-1 " >S</button>&nbsp;
+          <button  class=" button-size  btn-outline-dark titan-title-size-1" >M</button>&nbsp;
+          <button  class=" button-size  btn-outline-dark titan-title-size-1" >L</button>&nbsp;
+          <button  class=" button-size  btn-outline-dark titan-title-size-1"  >XL</button>&nbsp;
+        </div>
+        <div  class="col" style="text-align:center; width:30%;">
+          <button class="btn btn-round btn-b" style="width:100%; height:100%;" type="submit">Buy</button>&nbsp;<br>
+        </div>
+      </div>
+      <div style="text-align:left;" >
+        <span *ngFor= "let item of items"  >
+          <a class="dot" href="/#" style="background-color: black;"></a>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </span>
+        
+      </div>   
+      </div>
+   </div>
+   <hr class="solid">
+</div>
+</div>
+<section class="module-small" >
+  <div class="container">
+    <div class="row d-lg-none"  style=" text-align:left;" >
+      <div class="col-sm-6">
+      <h4 class="font-alt">{{item.nom}} </h4><br/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <h5 class="font-alt">Description</h5><br/>
+        <p class="font-alt" >{{item.description}}</p>
+      </div>
+      <div class="col-sm-6">
+        <div class="card" >
+          <div class="card-header">
+            <h5 class="font-alt"><i class="fa fa-truck fa-2x"></i>&nbsp;Livraison et Retour</h5>
+          </div>
+          <div class="card-body">
+            <div class = "col">
+            <blockquote class="blockquote">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+              <footer class="blockquote">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+            </blockquote>
+            </div>
+            <div class = "col">
+              <blockquote class="blockquote">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                <footer class="blockquote">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+              </blockquote>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

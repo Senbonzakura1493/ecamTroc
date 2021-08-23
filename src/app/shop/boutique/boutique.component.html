@@ -1,0 +1,77 @@
+
+
+<section class="module-small" style="background-color: white; padding-top : 120px;   ">
+    <div class="spinner-border" role="status" *ngIf="(isLoading$ |async)">
+      <span class="sr-only">Loading...</span>
+    </div>
+    <section class="module-small">
+      <div class="container">
+        <form class="row">
+          <div class="col-sm-4 mb-sm-20">
+            <select class="form-control">
+              <option selected="selected">Année scolaire</option>
+              <option>Popular</option>
+              <option>Latest</option>
+              <option>Average Price</option>
+              <option>High Price</option>
+              <option>Low Price</option>
+            </select>
+          </div>
+          <div class="col-sm-2 mb-sm-20">
+            <select class="form-control">
+              <option selected="selected">Cours demandé</option>
+              <option>Man</option>
+            </select>
+          </div>
+          <div class="col-sm-3 mb-sm-20">
+            <select class="form-control">
+              <option selected="selected">Cours proposé</option>
+              <option>Coats</option>
+              <option>Jackets</option>
+              <option>Dresses</option>
+              <option>Jumpsuits</option>
+              <option>Tops</option>
+              <option>Trousers</option>
+            </select>
+          </div>
+          <div class="col-sm-3">
+            <button class="btn btn-block btn-round btn-g" type="submit">Apply</button>
+          </div>
+        </form>
+      </div>
+    </section>
+    <div *ngIf="!(isLoading$ |async)">
+      <div class="row animated fadeInLeft WOW"  >
+          <div class="col-sm-3 col-lg-3" *ngFor="let item of items">
+          <div class="shop-item">
+            <div class="card" >
+              <div class="card-body" style="background-color: rgb(172, 171, 164)">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+              </ul>
+              <div class="card-body">
+                <button type="submit" class="btn btn-outline-dark my-2 my-sm-0" >Détails</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      
+    </div>  
+  <div>
+
+      
+    </div>  
+  
+  </section>
+    <script>
+      $( document ).ready(function() {
+        new WOW().init();
+        });
+    </script>

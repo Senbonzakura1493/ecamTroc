@@ -1,0 +1,98 @@
+<section class="module-medium" style="background-color : white ; padding-top : 120px;">
+    <div class="container">
+      <div class="row">
+        <ul class="nav nav-tabs" >
+          <li class="nav-item">
+            <a class="nav-link {{active_profile}} " (click)="onChangeTabToProfile();"><h5 class="font-alt" style="color:rgb(65, 65, 65)">Mon Profil</h5></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{active_orders}} "   (click)="onChangeTabToOrders();"><h5 class="font-alt" style="color:rgb(65, 65, 65)">Mes commandes</h5></a>
+          </li> 
+        </ul>   
+      </div>
+        <hr class="divider-w  mt-10 mb-20">
+        <div *ngIf="profile==true">
+          <app-form-profile ></app-form-profile>
+        </div>
+        
+        <div *ngIf="orders==true">
+          <div class="alert alert-success">
+            <strong>Votre commande est passée et sera bientôt traitée par notre équipe!</strong> Vous pourrez à tout instant voir son déroulé ici même.
+          </div>
+          <table class="table table-hover">
+            <thead>
+              <tr class="table-secondary">
+                <th>Article</th>
+                <th>Quantité</th>
+                <th>Taille</th>
+                <th>Prix</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>John</td>
+                <td>Doe</td>
+                <td>john@example.com</td>
+                <td>Doe</td>
+              </tr>
+              <tr>
+                <td>Mary</td>
+                <td>Moe</td>
+                <td>mary@example.com</td>
+                <td>Doe</td>
+              </tr>
+              <tr>
+                <td>July</td>
+                <td>Dooley</td>
+                <td>july@example.com</td>
+                <td>Doe</td>
+              </tr>
+            </tbody>
+            <tfoot >
+              <tr  class="table-secondary">
+                <th>Total</th>
+                <th></th>
+                <th></th>
+                <th>120 euros</th>
+              </tr>
+            </tfoot>
+          </table>
+          <button class="btn btn-round btn-b" (click)="onShowPreviousOrders()">Voir historique des commandes</button>
+          <hr class="divider-w  mt-10 mb-20">
+          <div *ngIf="previous== true">
+          <table class="table table-hover" >
+            <thead>
+              <tr class="table-secondary">
+                <th>Article</th>
+                <th>Quantité</th>
+                <th>Taille</th>
+                <th>Prix</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="table-secondary">
+                <td>John</td>
+                <td>Doe</td>
+                <td>john@example.com</td>
+                <td>Doe</td>
+              </tr>
+              <tr  class="table-secondary">
+                <td>Mary</td>
+                <td>Moe</td>
+                <td>mary@example.com</td>
+                <td>Doe</td>
+              </tr>
+              <tr  class="table-secondary">
+                <td>July</td>
+                <td>Dooley</td>
+                <td>july@example.com</td>
+                <td>Doe</td>
+              </tr>
+            </tbody>
+            </table>
+            <button class="btn btn-round btn-b" (click)="onHidePreviousOrders()">Fermer</button>  
+        </div>
+        </div>
+    </div>
+
+  </section>

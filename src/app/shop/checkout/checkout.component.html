@@ -1,0 +1,34 @@
+<section class="module-medium" style="background-color: white; padding-top : 120px;">
+    <div class="container">
+      <div class="row">
+          <h1 class="module-title font-alt">Checkout</h1>
+      </div>
+      <div class="row">
+        <ul class="nav nav-tabs font-alt">
+          <li class="nav-item">
+            <a class="nav-link {{panier}}"  (click)="onChangeTabToPanier()"><p class=" titan-title-size-1 font-alt" style="color:rgb(65, 65, 65)">Panier</p></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{profile}}"  (click)="onChangeTabToProfile()"><p class="titan-title-size-1 font-alt" style="color:rgb(65, 65, 65)">Profile</p></a>
+          </li> 
+          
+        </ul>  
+      </div>
+      <hr class="divider-w  mt-10 mb-20">
+      <div id="panier" *ngIf="panier == 'active'">
+        <app-panier></app-panier>
+      </div>
+      <div id="profile" *ngIf="profile == 'active'">
+        <div *ngIf="isAuth$ |async">
+          <app-form-profile [fromCheckout]="true"></app-form-profile>
+          <button class="btn btn-round btn-b" >Suivant</button>
+        </div>
+        <div *ngIf="!(isAuth$ |async)">
+          <app-login [fromCheckout]="true"></app-login>
+        </div>  
+      </div>
+      
+      
+
+    </div>
+  </section>

@@ -1,0 +1,72 @@
+<section class="module-medium" style="background-color: white;">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-5 col-sm-offset-1 mb-sm-40" *ngIf="!register && !guest">
+          <h4 class="font-alt">Hello cher écamien, </h4>
+          <hr class="divider-w mb-10">
+          <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <input class="form-control" id="username" type="text" formControlName="email" placeholder="Email"/>
+            </div>
+            <div class="form-group">
+              <input class="form-control" id="password" type="password" formControlName="password" placeholder="Mot de passe"/>
+            </div>
+            <div class="form-group">
+              <button class="btn btn-round btn-b" type="submit">Connexion</button>
+            </div>
+            <div class="form-group"><a routerLink="../forgot-password">Mot de passe oublié ?</a></div>
+           
+          </form>
+        </div>
+        <div class="col-sm-5 col-sm-offset-1 mb-sm-40" *ngIf="!register && guest">
+          <div class="shop-item">
+            <div class="card">
+                <div class="card-header titan-title-size-1 font-alt">
+                  Informations étudiant
+                </div>
+                <div class="card-body">
+                  <form>
+                      <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="inputPassword4">Nom</label>
+                        <input type="text" class="form-control" id="inputPassword4" placeholder="Nom">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="inputPassword4">Prénom</label>
+                        <input type="text" class="form-control" id="inputPassword4" placeholder="Prénom">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputEmail4">Email</label>
+                      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                      <label for="inputEmail4">Numéro</label>
+                      <input type="text" class="form-control" id="inputEmail4" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                      <label for="inputSection">Section</label>
+                      <input type="text" class="form-control" id="inputSection" placeholder="5MIN">
+                    </div>
+                   
+                    
+                    <button class="btn btn-outline-dark my-2 my-sm-0" >Enregistrer et continuer</button>
+                  </form></div></div></div>
+        </div>
+
+        <div class="col-sm-5 "  *ngIf="!register">
+            <h4 class="font-alt">Inscription</h4>
+            <hr class="divider-w mb-10">
+                Nouveau/Nouvelle ? 
+                <p>Inscris toi pour pouvoir matcher avec un étudiant</p>
+                <p>Utilise ton adresse ecam pour plus de facilité de contact avec ton camarade.</p>
+                
+                <button class="btn btn-outline-dark my-2 my-sm-0" (click)="onRegister()" >Inscription</button>
+          </div>
+          <div class="col-sm-5" *ngIf="register">
+            <app-register></app-register>
+          </div>
+      </div>
+    </div>
+  </section>
+  <router-outlet></router-outlet>

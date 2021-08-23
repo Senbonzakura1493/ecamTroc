@@ -6,7 +6,7 @@
             <a class="nav-link {{active_profile}} " (click)="onChangeTabToProfile();"><h5 class="font-alt" style="color:rgb(65, 65, 65)">Mon Profil</h5></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{active_orders}} "   (click)="onChangeTabToOrders();"><h5 class="font-alt" style="color:rgb(65, 65, 65)">Mes commandes</h5></a>
+            <a class="nav-link {{active_orders}} "   (click)="onChangeTabToOrders();"><h5 class="font-alt" style="color:rgb(65, 65, 65)">Mes collaborations</h5></a>
           </li> 
         </ul>   
       </div>
@@ -16,80 +16,45 @@
         </div>
         
         <div *ngIf="orders==true">
-          <div class="alert alert-success">
-            <strong>Votre commande est passée et sera bientôt traitée par notre équipe!</strong> Vous pourrez à tout instant voir son déroulé ici même.
+          <div class="col-sm-3 col-lg-3">
+            <div class="shop-item">
+              <div class="card" >
+                <div class="card-body" style="background-color: rgb(172, 171, 164)">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Cras justo odio</li>
+                  <li class="list-group-item">Dapibus ac facilisis in</li>
+                  <li class="list-group-item">Vestibulum at eros</li>
+                </ul>
+                <div class="card-body">
+                  <button type="submit" class="btn btn-outline-dark my-2 my-sm-0" >Détails</button>
+                </div>
+              </div>
+            </div>
           </div>
-          <table class="table table-hover">
-            <thead>
-              <tr class="table-secondary">
-                <th>Article</th>
-                <th>Quantité</th>
-                <th>Taille</th>
-                <th>Prix</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>John</td>
-                <td>Doe</td>
-                <td>john@example.com</td>
-                <td>Doe</td>
-              </tr>
-              <tr>
-                <td>Mary</td>
-                <td>Moe</td>
-                <td>mary@example.com</td>
-                <td>Doe</td>
-              </tr>
-              <tr>
-                <td>July</td>
-                <td>Dooley</td>
-                <td>july@example.com</td>
-                <td>Doe</td>
-              </tr>
-            </tbody>
-            <tfoot >
-              <tr  class="table-secondary">
-                <th>Total</th>
-                <th></th>
-                <th></th>
-                <th>120 euros</th>
-              </tr>
-            </tfoot>
-          </table>
-          <button class="btn btn-round btn-b" (click)="onShowPreviousOrders()">Voir historique des commandes</button>
+          <button class="btn btn-round btn-b" (click)="onShowPreviousOrders()">Voir historique des collaborations</button>
           <hr class="divider-w  mt-10 mb-20">
           <div *ngIf="previous== true">
-          <table class="table table-hover" >
-            <thead>
-              <tr class="table-secondary">
-                <th>Article</th>
-                <th>Quantité</th>
-                <th>Taille</th>
-                <th>Prix</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="table-secondary">
-                <td>John</td>
-                <td>Doe</td>
-                <td>john@example.com</td>
-                <td>Doe</td>
-              </tr>
-              <tr  class="table-secondary">
-                <td>Mary</td>
-                <td>Moe</td>
-                <td>mary@example.com</td>
-                <td>Doe</td>
-              </tr>
-              <tr  class="table-secondary">
-                <td>July</td>
-                <td>Dooley</td>
-                <td>july@example.com</td>
-                <td>Doe</td>
-              </tr>
-            </tbody>
-            </table>
+            <div class="col-sm-3 col-lg-3" >
+              <div class="shop-item">
+                <div class="card" >
+                  <div class="card-body" style="background-color: rgb(172, 171, 164)">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                  </ul>
+                  <div class="card-body">
+                    <button type="submit" class="btn btn-outline-dark my-2 my-sm-0" >Détails</button>
+                  </div>
+                </div>
+              </div>
+            </div>
             <button class="btn btn-round btn-b" (click)="onHidePreviousOrders()">Fermer</button>  
         </div>
         </div>

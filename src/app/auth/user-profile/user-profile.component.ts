@@ -28,6 +28,7 @@ export class UserProfileComponent implements OnInit {
       this.authService.isLoadingSubject.next(true);
       this.authState.userAuthState.subscribe(async(data:boolean)=>{
         this.isAuth$ = data;
+        console.log(this.authService.profileInfos$)
       })
     }
 

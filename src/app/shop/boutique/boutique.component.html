@@ -46,16 +46,16 @@
           <div class="shop-item">
             <div class="card" >
               <div class="card-body" style="background-color: rgb(172, 171, 164)">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <h5 class="card-title">{{item.course_id}}</h5>
+                <p class="card-text">{{item.description}}</p>
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Vestibulum at eros</li>
+                <li class="list-group-item">{{item.hours}} heures</li>
+                <li class="list-group-item">Statut :  {{item.status}}</li>
+                <li class="list-group-item">Année d'étude : {{item.schoolyear_id}}</li>
               </ul>
               <div class="card-body">
-                <button type="submit" class="btn btn-outline-dark my-2 my-sm-0" >Détails</button>
+                <button type="submit" class="btn btn-outline-dark my-2 my-sm-0" >Détails </button>
               </div>
             </div>
           </div>

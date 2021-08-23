@@ -59,18 +59,14 @@ export class FormProfileComponent implements OnInit {
       email: new FormControl({value: this.user_infos.email,disabled :true}, Validators.required),
       firstname :[this.user_infos.firstname || "",Validators.required],
       lastname:[this.user_infos.lastname || "",Validators.required],
-      birthday:[this.user_infos.birthday || "",Validators.required],
-      city:[this.user_infos.city || "",Validators.required],
-      country:[this.user_infos.country || "",Validators.required],
+      schoolyear:[this.user_infos.schoolyear || "",Validators.required],
       phone:[this.user_infos.phone || "",Validators.required],
-      postal_code:[this.user_infos.postal_code || "",Validators.required],
-      adress:[this.user_infos.adress || "",Validators.required],
-      box:[this.user_infos.box || "",Validators.required],
+      
     })
     
   }
 
   onUpdateProfile(){
-    
+    //still to do
   }
 }

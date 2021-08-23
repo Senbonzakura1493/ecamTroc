@@ -18,8 +18,8 @@ export class BoutiqueComponent implements OnInit {
         this.itemsService.isLoadingSubject.next(true);
         this.itemsService.APIgetItems().subscribe(async(data:any)=>{
           console.log(data);
-          this.items = data.body.items;
-          this.itemsService.itemsSubject.next(data.body.items)
+          this.items = data.body.collaborations;
+          this.itemsService.itemsSubject.next(data.body.collaborations)
           setTimeout(() => {
             this.itemsService.isLoadingSubject.next(false);
           }, );

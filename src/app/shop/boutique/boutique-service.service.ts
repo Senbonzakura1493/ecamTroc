@@ -24,7 +24,7 @@ export class BoutiqueServiceService {
 
   // get all items from api 
   APIgetItems(): Observable<any> {
-    return this.http.get('http://127.0.0.1:8000/api/items',{observe: 'response'});
+    return this.http.get('http://127.0.0.1:8000/api/collaborations',{observe: 'response'});
   }
 
 }

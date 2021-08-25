@@ -1,8 +1,8 @@
 
-<section class="module-medium" style="background-color: white;padding-top : 120px;">
+<section class="module" style="background-color: white;padding-top : 120px;">
     <div class="container">
       <div class="row">
-        <div class="col-sm-5 col-sm-offset-1 mb-sm-40" *ngIf="!register && !guest">
+        <div class="col-sm-6 col-sm-offset-1 mb-sm-40" *ngIf="!register && !guest">
           <h4 class="font-alt">Hello cher écamien, </h4>
           <hr class="divider-w mb-10">
           <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
@@ -19,7 +19,7 @@
            
           </form>
         </div>
-        <div class="col-sm-5 col-sm-offset-1 mb-sm-40" *ngIf="!register && guest">
+        <div class="col-sm-6 col-sm-offset-1 mb-sm-40" *ngIf="!register && guest">
           <div class="shop-item">
             <div class="card">
                 <div class="card-header titan-title-size-1 font-alt">
@@ -70,4 +70,4 @@
       </div>
     </div>
   </section>
-  <router-outlet></router-outlet>
+ 

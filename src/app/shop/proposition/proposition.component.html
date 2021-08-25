@@ -13,27 +13,33 @@
     <app-login></app-login>
 </div>  
 
-<form class="form" [formGroup]="propositionForm" *ngIf="!(isLoading$ | async)">
-  <div class="alert alert-danger">
-    <strong>Complète toutes les informations avant de valider ta proposition</strong> <a href="#"> ici </a>
+<form class="form" [formGroup]="propositionForm" *ngIf="!(isLoading$ | async) && (isAuth$)" (ngSubmit)="submitProposition()">
+  <div class="alert alert-warning">
+    <strong>Complète toutes les informations avant de valider ta proposition</strong>
   </div>
   <div class="form-group">
-    <input class="form-control" formControlName="course_id" id="email" type="email" placeholder="Cours pour lequel tu as besoin d'aide"/>
+    <select  class="form-control" formControlName="course_id" placeholder="Cours pour lequel tu as besoin d'aide">
+      <option *ngFor="let x of courses" [ngValue]="x.id" [selected]="course_two_id == x.id" >{{x.name}}</option>
+    </select>
   </div>
   <div class="form-group">
-    <input class="form-control"  type="text" formControlName="course_two_id" placeholder="Le cours que tu propose en échange"/>
+    <select  class="form-control" formControlName="course_two_id" placeholder="Le cours que tu propose en échange">
+      <option *ngFor="let x of courses" [ngValue]="x.id" [selected]="course_two_id == x.id" >{{x.name}}</option>
+    </select>
   </div>
   <div class="form-group">
     <input class="form-control"   type="text"  formControlName="hours" placeholder="nombre d'heures"/>
   </div>
   <div class="form-group">
-    <input class="form-control" id="scyear" type="text"  formControlName="schoolyear_id" placeholder="Année d'étude"/>
+    <select  class="form-control" formControlName="schoolyear_id" placeholder="Année d'étude">
+      <option *ngFor="let x of schoolyears" [ngValue]="x.id" [selected]="schoolyear_id == x.id" >{{x.name}}</option>
+    </select>
   </div>
   <div class="form-group">
     <textarea class="form-control" rows="7" formControlName="description"  placeholder="Essaie de décrire au maximum ce pourquoi tu as besoin d'aide."></textarea>
   </div>
   <div class="form-group">
-    <button type="submit" class="btn btn-round btn-b">Soumettre ta proposition</button>
+    <button type="submit"  class="btn btn-round btn-b">Soumettre ta proposition</button>
   </div>
 </form>
 </div>

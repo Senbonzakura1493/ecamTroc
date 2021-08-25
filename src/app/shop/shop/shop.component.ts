@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ActivatedRoute,Router } from '@angular/router';
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
@@ -7,11 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShopComponent implements OnInit {
 
-  constructor() { 
+  constructor(private activroute :ActivatedRoute,public router : Router) { 
+    this.router.events.subscribe((path) => {{
+      window.scrollTo(0, 0);
+    }
+  });
   }
 
   ngOnInit(): void {
-
+    console.log(this.activroute)
   }
 
 }

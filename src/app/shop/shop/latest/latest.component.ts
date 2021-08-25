@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-latest',
   templateUrl: './latest.component.html',
@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LatestComponent implements OnInit {
 
-  constructor() { }
+  constructor(private activroute :ActivatedRoute) { 
+    console.log(this.activroute)
+  }
 
   ngOnInit(): void {
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router, RouterModule} from '@angular/router';
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',

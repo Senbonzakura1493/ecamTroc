@@ -2,7 +2,7 @@
   <div  mat-dialog-content mat-dialog-content-scrollable >
     <div mat-dialog-header>
       <a><i class="fa fa-times fa-2x text-light" (click)="closeDialog()" aria-hidden="true"></i></a>
-      <h1 class="module-title font-alt" style="color:white" >Cart</h1>  
+      <h1 class="module-title font-alt" style="color:white" >Mes collaborations</h1>  
     </div>
     <div mat-dialog-body >
       <div class="row text-light" style="padding-top: 15px;" >
@@ -10,7 +10,7 @@
           <a href="#"><img src="http://127.0.0.1:8000/images/{{items[0][0].code}}/{{items[0][0].color}}/{{items[0][0].imageOne}}" alt="Men’s Casual Pack"/></a>
         </div>
         <div class="col">
-            Name Price Quantity
+            Cours 1 cours 2 Heures
         </div>
       </div>
       <div class="row text-light" style="padding-top: 15px;" >
@@ -18,13 +18,13 @@
           <a href="#"><img src="http://127.0.0.1:8000/images/{{items[1][0].code}}/{{items[1][0].color}}/{{items[1][0].imageOne}}" alt="Men’s Casual Pack"/></a>
         </div>
         <div class="col">
-            Name Price Quantity
+          Cours 1 cours 2 Heures
         </div>
       </div>
     </div>
     <div mat-dialog-footer >
     <div style="padding-top: 15px;">
-      <button class="btn btn-sm btn-inline btn-round btn-light" (click)="closeDialog()" routerLink="/checkout">Pay</button>&nbsp;&nbsp;
+      <button class="btn btn-sm btn-inline btn-round btn-light" (click)="closeDialog()" routerLink="/checkout">Confirmer</button>&nbsp;&nbsp;
     </div>
     </div>
   </div>

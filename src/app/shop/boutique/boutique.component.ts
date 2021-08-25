@@ -17,13 +17,13 @@ export class BoutiqueComponent implements OnInit {
       if(data == false){
         this.itemsService.isLoadingSubject.next(true);
         this.itemsService.APIgetItems().subscribe(async(data:any)=>{
-          console.log(data);
-          this.items = data.body.collaborations;
+          if(data.status==200){
+            this.items = data.body.collaborations;
           this.itemsService.itemsSubject.next(data.body.collaborations)
           setTimeout(() => {
             this.itemsService.isLoadingSubject.next(false);
           }, );
-          
+          }
         })
       }
       else{

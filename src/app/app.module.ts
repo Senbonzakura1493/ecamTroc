@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
-import { Routes, RouterModule, Router } from '@angular/router';
+
 import {MatInputModule} from '@angular/material/input';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,15 +16,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from '../app/shared/auth.interceptor.service';
-import { RouterTestingModule } from '@angular/router/testing';
+
+
+
 import { ToastrModule } from 'ngx-toastr';
-import { ContactComponent } from './contact/contact.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    ContactComponent,
+
+    
   ],
   imports: [
     HttpClientModule,
@@ -33,7 +35,6 @@ import { ContactComponent } from './contact/contact.component';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    RouterTestingModule,
     MatDialogModule,
     MatToolbarModule,
     MatButtonModule,
@@ -51,8 +52,7 @@ import { ContactComponent } from './contact/contact.component';
       useClass: AuthInterceptor,
       multi: true
     },
-   
-   ],
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

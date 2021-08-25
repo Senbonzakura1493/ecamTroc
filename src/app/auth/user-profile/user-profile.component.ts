@@ -30,20 +30,18 @@ export class UserProfileComponent implements OnInit {
       this.authState.userAuthState.subscribe(async(data:boolean)=>{
         this.isAuth$ = data;
         if(data == true ){
-          this.authService.getNextValueProfileInfos().subscribe(data=>{
-            if(data == undefined){
-              this.router.navigateByUrl('/login')
-            }
-            if(data != null && data.status==200){
-              this.user_id=data.id;
+          this.authService.getNextValueProfileInfos().subscribe((data:any)=>{
+            if(data != undefined){
+              console.log(data)
+              this.user_id = data.id;
               this.authService.getUserCollaborations(this.user_id).subscribe(data=>{
                 if(data != null){
-                this.collaborations = data.body;
-                console.log(data)
-              }
+                this.collaborations = data.body;     
+                } 
               })
-            } 
-          })
+            }
+           })     
+          
         }
         
         

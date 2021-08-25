@@ -1,0 +1,43 @@
+<section class="module-medium" style="background-color: white; padding-top : 120px;">
+<div class="container">
+<div class="row">
+<div class="spinner-border" role="status" *ngIf="(isLoading$|async)">
+  <span class="sr-only">Loading...</span>
+</div>
+<!-- if user not connected or doesn't have any profile-->
+<div class="alert alert-danger" *ngIf="!(isAuth$)" >
+  <strong>Veuillez vous inscrire pour pouvoir poster une proposition</strong> 
+</div>
+</div>
+<div *ngIf="!(isAuth$)">
+    <app-login></app-login>
+</div>  
+
+<form class="form" [formGroup]="propositionForm" *ngIf="!(isLoading$ | async)">
+  <div class="alert alert-danger">
+    <strong>Complète toutes les informations avant de valider ta proposition</strong> <a href="#"> ici </a>
+  </div>
+  <div class="form-group">
+    <input class="form-control" formControlName="course_id" id="email" type="email" placeholder="Cours pour lequel tu as besoin d'aide"/>
+  </div>
+  <div class="form-group">
+    <input class="form-control"  type="text" formControlName="course_two_id" placeholder="Le cours que tu propose en échange"/>
+  </div>
+  <div class="form-group">
+    <input class="form-control"   type="text"  formControlName="hours" placeholder="nombre d'heures"/>
+  </div>
+  <div class="form-group">
+    <input class="form-control" id="scyear" type="text"  formControlName="schoolyear_id" placeholder="Année d'étude"/>
+  </div>
+  <div class="form-group">
+    <textarea class="form-control" rows="7" formControlName="description"  placeholder="Essaie de décrire au maximum ce pourquoi tu as besoin d'aide."></textarea>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-round btn-b">Soumettre ta proposition</button>
+  </div>
+</form>
+</div>
+</section>
+    
+
+

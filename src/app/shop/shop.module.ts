@@ -16,6 +16,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ItemComponent} from './item/item.component';
 import { AuthModule } from '../auth/auth.module';
 import { LayoutComponent } from './layout/layout.component';
+import { PropositionComponent } from './proposition/proposition.component';
+import { BrowserModule } from '@angular/platform-browser';
+
 @NgModule({
   declarations: [ShopComponent,
      BasketComponent, 
@@ -27,7 +30,7 @@ import { LayoutComponent } from './layout/layout.component';
      BoutiqueComponent,
      ItemComponent,
      LayoutComponent,
-     CheckoutComponent, PanierComponent,
+     CheckoutComponent, PanierComponent, PropositionComponent
      ],
   imports: [
     CommonModule,

@@ -6,64 +6,82 @@
     </div>
     <section class="module-small">
       <div class="container">
-        <form class="row">
+        <form class="row" (ngSubmit)="submitFilter(v1.value,v2.value)" >
           <div class="col-sm-4 mb-sm-20">
-            <select class="form-control">
-              <option selected="selected">Année scolaire</option>
-              <option>Popular</option>
-              <option>Latest</option>
-              <option>Average Price</option>
-              <option>High Price</option>
-              <option>Low Price</option>
+            <select  class="form-control" #v1 placeholder="Le cours que tu propose en échange">
+              <option *ngFor="let x of courses" [ngValue]="x.id" [selected]="course_two_id == x.id" >{{x.name}}</option>
             </select>
           </div>
           <div class="col-sm-2 mb-sm-20">
-            <select class="form-control">
-              <option selected="selected">Cours demandé</option>
-              <option>Man</option>
+            <select  class="form-control" #v2 placeholder="Année d'étude">
+              <option *ngFor="let x of schoolyears" [ngValue]="x.id" [selected]="schoolyear_id == x.id" >{{x.name}}</option>
             </select>
           </div>
-          <div class="col-sm-3 mb-sm-20">
-            <select class="form-control">
-              <option selected="selected">Cours proposé</option>
-              <option>Coats</option>
-              <option>Jackets</option>
-              <option>Dresses</option>
-              <option>Jumpsuits</option>
-              <option>Tops</option>
-              <option>Trousers</option>
-            </select>
-          </div>
+         
           <div class="col-sm-3">
             <button class="btn btn-block btn-round btn-g" type="submit">Apply</button>
           </div>
         </form>
       </div>
     </section>
-    <div *ngIf="!(isLoading$ |async)">
+    <div *ngIf="!(isLoading$ |async) && filterList.length == 0">
       <div class="row animated fadeInLeft WOW"  >
           <div class="col-sm-3 col-lg-3" *ngFor="let item of items">
           <div class="shop-item">
             <div class="card" >
               <div class="card-body" style="background-color: rgb(172, 171, 164)">
-                <h5 class="card-title">{{item.course_id}}</h5>
+                <div  *ngFor="let course of courses">
+                  <h5 class="card-title"  *ngIf="course.id == item.course_id">{{course.name}}</h5>
+                </div>
                 <p class="card-text">{{item.description}}</p>
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">{{item.hours}} heures</li>
-                <li class="list-group-item">Statut :  {{item.status}}</li>
-                <li class="list-group-item">Année d'étude : {{item.schoolyear_id}}</li>
+                <li class="list-group-item">Statut : {{item.status}}</li>
+                <div  *ngFor="let scyear of schoolyears">
+                <li class="list-group-item" *ngIf="scyear.id == item.schoolyear_id">Année d'étude : {{scyear.name}}</li>
+              </div>
               </ul>
               <div class="card-body">
                 <button type="submit" class="btn btn-outline-dark my-2 my-sm-0" >Détails </button>
+                
               </div>
             </div>
           </div>
         </div>
         
       </div>
-      
     </div>  
+    <div *ngIf="!(isLoading$ |async)">
+      <div class="row animated fadeInLeft WOW"  >
+          <div class="col-sm-3 col-lg-3" *ngFor="let item of filterList">
+          <div class="shop-item">
+            <div class="card" >
+              <div class="card-body" style="background-color: rgb(172, 171, 164)">
+                <div  *ngFor="let course of courses">
+                  <h5 class="card-title"  *ngIf="course.id == item.course_id">{{course.name}}</h5>
+                </div>
+                <p class="card-text">{{item.description}}</p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">{{item.hours}} heures</li>
+                <li class="list-group-item">Statut : {{item.status}}</li>
+                <div  *ngFor="let scyear of schoolyears">
+                <li class="list-group-item" *ngIf="scyear.id == item.schoolyear_id">Année d'étude : {{scyear.name}}</li>
+              </div>
+              </ul>
+              <div class="card-body">
+                <button type="submit" class="btn btn-outline-dark my-2 my-sm-0" >Détails </button>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>  
+
+    
   <div>
 </div>  
 

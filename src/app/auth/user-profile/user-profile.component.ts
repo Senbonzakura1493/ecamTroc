@@ -29,18 +29,23 @@ export class UserProfileComponent implements OnInit {
       this.authService.isLoadingSubject.next(true);
       this.authState.userAuthState.subscribe(async(data:boolean)=>{
         this.isAuth$ = data;
-        this.authService.getNextValueProfileInfos().subscribe(data=>{
-          if(data != null){
-            this.user_id=data.id;
-            this.authService.getUserCollaborations(this.user_id).subscribe(data=>{
-              if(data != null){
-              this.collaborations = data.body;
-              console.log(data)
+        if(data == true ){
+          this.authService.getNextValueProfileInfos().subscribe(data=>{
+            if(data == undefined){
+              this.router.navigateByUrl('/login')
             }
-            })
-          }
-
-        })
+            if(data != null && data.status==200){
+              this.user_id=data.id;
+              this.authService.getUserCollaborations(this.user_id).subscribe(data=>{
+                if(data != null){
+                this.collaborations = data.body;
+                console.log(data)
+              }
+              })
+            } 
+          })
+        }
+        
         
       })
     }

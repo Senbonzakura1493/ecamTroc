@@ -39,6 +39,6 @@ import { ItemComponent} from './item/item.component';
  
   ],
   exports:[ShopComponent ],
-providers:[{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}]
+  providers:[{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}]
 })
 export class ShopModule { }

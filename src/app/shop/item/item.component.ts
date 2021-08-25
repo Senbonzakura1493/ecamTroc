@@ -16,7 +16,7 @@ export class ItemComponent implements OnInit {
   item: any ;
   availablecolors : any;
   items = [];
-  selected_size: string;
+  selected_hours: string;
   isLoading$: Observable<boolean>;
   constructor(private toastr: ToastrService, private activatedRoute: ActivatedRoute,public itemService : ItemService, public BasketService : BasketService ) { 
       this.isLoading$ = this.itemService.isLoading$;
@@ -43,7 +43,7 @@ export class ItemComponent implements OnInit {
   }
 
   addToCart(item) {
-    this.BasketService.addToCart(item , this.selected_size);
+    this.BasketService.addToCart(item , this.selected_hours);
   }
 
  

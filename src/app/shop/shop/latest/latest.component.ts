@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 export class LatestComponent implements OnInit {
 
   constructor(private activroute :ActivatedRoute) { 
-    console.log(this.activroute)
+  
   }
 
   ngOnInit(): void {

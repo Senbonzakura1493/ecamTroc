@@ -14,7 +14,7 @@ export class BasketService {
       this.items = JSON.parse(localStorage.getItem('basket'))
     }
     this.items.push([product,size]);
-    console.log(this.items)
+    
     localStorage.setItem('basket', JSON.stringify(this.items))
   }
 

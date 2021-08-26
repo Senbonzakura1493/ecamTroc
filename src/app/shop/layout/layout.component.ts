@@ -15,11 +15,11 @@ export class LayoutComponent implements OnInit {
     });
 
     this.shopService.APIgetCourses().subscribe(data=>{
-      console.log(data.body);
+     
       this.shopService.coursesSubject.next(data.body.courses)
     })
     this.shopService.APIgetSchoolyears().subscribe(data=>{
-      console.log(data.body);
+     
       this.shopService.schoolyearsSubject.next(data.body.schoolyears)
     })
   }

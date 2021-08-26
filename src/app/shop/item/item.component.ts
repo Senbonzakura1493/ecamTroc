@@ -25,7 +25,6 @@ export class ItemComponent implements OnInit {
       this.itemService.isLoadingSubject.next(true);
       this.itemService.APIgetItem(this.id).subscribe((data:any)=>{
         if(data){
-          console.log(data);
           this.item = data.body.item;
           this.items = data.body.items;
           this.availablecolors = this.items.length;

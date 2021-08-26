@@ -9,7 +9,7 @@ import { BasketService} from './basket.service'
 export class BasketComponent implements OnInit {
   items = JSON.parse(localStorage.getItem('basket'))
   constructor(public dialogRef: MatDialogRef<BasketComponent>,public dialog: MatDialog, public basketService : BasketService) {
-    console.log(this.items)
+   
    }
 
   ngOnInit(): void {

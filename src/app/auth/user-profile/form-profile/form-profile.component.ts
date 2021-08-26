@@ -26,6 +26,7 @@ export class FormProfileComponent implements OnInit {
         if(this.isAuth$ == true){
           this.authService.getNextValueProfileInfos().subscribe((data:any)=>{
             this.user_infos = data;
+           
             if(data != undefined){
                 this.initFormProfile();
                 setTimeout(() => {
@@ -46,6 +47,9 @@ export class FormProfileComponent implements OnInit {
               }
          
           })
+        }
+        if(this.isAuth$ == false){
+          this.router.navigateByUrl('login');
         }
       })    
     }

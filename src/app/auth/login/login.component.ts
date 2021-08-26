@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 import { TokenService } from '../../shared/token.service';
 import { AuthStateService } from '../../shared/auth-state.service';
 import { Observable } from 'rxjs';
-
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
     public authService: AuthService,
     private token: TokenService,
     private authState: AuthStateService,
+    private toast : ToastrService
   ) { 
     this.isLoading$ = this.authService.isLoading$
     this.authState.userAuthState.subscribe(async(data:boolean)=>{
@@ -59,8 +60,12 @@ export class LoginComponent implements OnInit {
         this.profile_infos = result.body.user_info;
         this.authService.profileInfoSubject.next(result.body.user_info)
         this.responseHandler(result);
+        setTimeout(() => {
+          this.toast.success('Vous êtes connecté ! ');
+        }, );
       },
       error => {
+        this.toast.error('une erreur est survenue')
         this.errors = error.error;
       },() => {
         this.authState.setAuthState(true);

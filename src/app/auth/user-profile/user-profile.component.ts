@@ -32,7 +32,7 @@ export class UserProfileComponent implements OnInit {
         if(data == true ){
           this.authService.getNextValueProfileInfos().subscribe((data:any)=>{
             if(data != undefined){
-              console.log(data)
+              
               this.user_id = data.id;
               this.authService.getUserCollaborations(this.user_id).subscribe(data=>{
                 if(data != null){

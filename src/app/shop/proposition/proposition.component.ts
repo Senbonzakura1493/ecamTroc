@@ -29,11 +29,11 @@ export class PropositionComponent implements OnInit {
         this.isAuth$ = data;
         this.shopserv.getNextValueCourses().subscribe(courses => {
           this.courses = courses;
-          console.log(courses)
+        
         } );
         this.shopserv.getNextValueSchoolyears().subscribe(schoolyears => {
           this.schoolyears = schoolyears;
-          console.log(schoolyears)
+        
         } );
         setTimeout(() => {
           this.initFormProposition();

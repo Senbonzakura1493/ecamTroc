@@ -17,12 +17,13 @@ export class BoutiqueComponent implements OnInit {
   filterList = []; 
   constructor(public itemsService : BoutiqueServiceService, private shopServ : ShopService) {
     this.isLoading$ = this.itemsService.isLoading$;
-    this.shopServ.APIgetCourses().subscribe(data=>{
-      this.shopServ.coursesSubject.next(data.body.courses)
-    })
-    this.shopServ.APIgetSchoolyears().subscribe(data=>{
-      this.shopServ.schoolyearsSubject.next(data.body.schoolyears)
-    })
+    this.shopServ.getNextValueCourses().subscribe(courses => {
+      this.courses = courses;
+     
+    } );
+    this.shopServ.getNextValueSchoolyears().subscribe(schoolyears => {
+      this.schoolyears = schoolyears;
+    } );
    }
   ngOnInit(): void {
     this.itemsService.itemsSubject.subscribe((data:any)=>{
@@ -33,12 +34,6 @@ export class BoutiqueComponent implements OnInit {
             this.items = data.body.collaborations;
             this.itemsService.itemsSubject.next(data.body.collaborations);
           setTimeout(() => {
-            this.shopServ.getNextValueCourses().subscribe(courses => {
-              this.courses = courses;
-            } );
-            this.shopServ.getNextValueSchoolyears().subscribe(schoolyears => {
-              this.schoolyears = schoolyears;
-            } );
             this.itemsService.isLoadingSubject.next(false);
           }, );
           }

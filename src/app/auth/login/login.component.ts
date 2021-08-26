@@ -1,7 +1,7 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { TokenService } from '../../shared/token.service';
 import { AuthStateService } from '../../shared/auth-state.service';
 import { Observable } from 'rxjs';
@@ -48,8 +48,8 @@ export class LoginComponent implements OnInit {
       }, );   
     });
     this.loginForm = this.fb.group({
-      email: [],
-      password: []
+      email: ["", Validators.required],
+      password: ["", Validators.required]
     })
    }
 

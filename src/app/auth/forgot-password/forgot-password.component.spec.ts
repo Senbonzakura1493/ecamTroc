@@ -4,6 +4,7 @@ import { RouterTestingModule } from "@angular/router/testing";
 import { RouterModule } from '@angular/router';
 import { ForgotPasswordComponent } from './forgot-password.component';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 
 
 describe('ForgotPasswordComponent', () => {
@@ -14,13 +15,14 @@ describe('ForgotPasswordComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ ForgotPasswordComponent ],
       imports: [
+        ToastrModule,
         RouterModule,
         HttpClientModule,
         RouterTestingModule,
         FormsModule,
         ReactiveFormsModule
         ],
-        providers: [FormsModule,FormBuilder,ReactiveFormsModule],
+        providers: [ToastrModule,FormsModule,FormBuilder,ReactiveFormsModule],
     })
     .compileComponents();
   });

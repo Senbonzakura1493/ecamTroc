@@ -28,6 +28,9 @@ export class PropositionComponent implements OnInit {
       this.authService.isLoadingSubject.next(true);
       this.authState.userAuthState.subscribe((data:any)=>{
         this.isAuth$ = data;
+        this.authService.getNextValueProfileInfos().subscribe((data:any)=>{
+          this.user_infos = data;
+        })
         this.shopserv.getNextValueCourses().subscribe(courses => {
           this.courses = courses;
         
@@ -52,7 +55,7 @@ export class PropositionComponent implements OnInit {
   }
   initFormProposition(){
     this.propositionForm = this.fb.group({
-      f_student_id : [1, Validators.required],
+      f_student_id : [this.user_infos.id, Validators.required],
       course_id :["",Validators.required],
       course_two_id:["",Validators.required],
       hours:["",Validators.required],

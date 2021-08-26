@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup,Validators,FormControl } from "@angular/forms";
 import { ToastrService } from 'ngx-toastr';
 import { AuthStateService } from '../../../shared/auth-state.service';
 import { Observable,BehaviorSubject } from 'rxjs';
+import { ShopService } from 'src/app/shop/shop/shop.service';
 @Component({
   selector: 'app-form-profile',
   templateUrl: './form-profile.component.html',
@@ -16,9 +17,9 @@ export class FormProfileComponent implements OnInit {
   @Input() fromCheckout :boolean;
   profileForm: FormGroup; 
   user_infos :any;
- 
+  schoolyears:any;
   constructor(public router: Router,
-    public fb: FormBuilder,
+    public fb: FormBuilder,private shopserv : ShopService,
     public authService: AuthService , public authState : AuthStateService, private toast :ToastrService) { 
       this.isLoading$ = this.authService.isLoading$; 
       this.authState.userAuthState.subscribe(async(data:any)=>{
@@ -26,6 +27,9 @@ export class FormProfileComponent implements OnInit {
         if(this.isAuth$ == true){
           this.authService.getNextValueProfileInfos().subscribe((data:any)=>{
             this.user_infos = data;
+            this.shopserv.getNextValueSchoolyears().subscribe(schoolyears => {
+              this.schoolyears = schoolyears;
+            } );
             if(data){
                 this.initFormProfile();
                 setTimeout(() => {

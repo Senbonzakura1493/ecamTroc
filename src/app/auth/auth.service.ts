@@ -22,12 +22,18 @@ export class AuthService {
   profileInfoSubject: BehaviorSubject<boolean>;
   profileInfos$: Observable<boolean>;
 
+  collaborationsUserSubject: BehaviorSubject<boolean>;
+  collaborationsUserInfos$: Observable<boolean>;
+
   constructor(private http: HttpClient) { 
     this.isLoadingSubject = new BehaviorSubject<boolean>(false);
     this.isLoading$ = this.isLoadingSubject.asObservable();
 
     this.profileInfoSubject = new BehaviorSubject<any>(undefined);
     this.profileInfos$ = this.profileInfoSubject.asObservable();
+
+    this.collaborationsUserSubject = new BehaviorSubject<any>(undefined);
+    this.collaborationsUserInfos$ = this.collaborationsUserSubject.asObservable();
   }
 
   // User registration
@@ -69,6 +75,10 @@ export class AuthService {
   getNextValueProfileInfos() : Observable<any>{
 
       return this.profileInfoSubject.asObservable(); }
+
+  getNextValueProfileInfosCollab() : Observable<any>{
+
+        return this.collaborationsUserSubject.asObservable(); }
 
   // Access user profile
   getUserCollaborations(id): Observable<any> {

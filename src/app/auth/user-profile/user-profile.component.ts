@@ -43,7 +43,8 @@ export class UserProfileComponent implements OnInit {
               } );
               this.authService.getUserCollaborations(this.user_id).subscribe(data=>{
                 if(data != null){
-                this.collaborations = data.body;     
+                this.collaborations = data.body;
+                this.authService.collaborationsUserSubject.next(data.body);
                 } 
               })
             }

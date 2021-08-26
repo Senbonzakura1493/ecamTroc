@@ -1,7 +1,7 @@
 <div class="spinner-border" role="status" *ngIf="(isLoading$ | async)">
   <span class="sr-only">Loading...</span>
 </div>
-<form class="form" [formGroup]="profileForm" *ngIf="!(isLoading$ | async)">
+<form class="form" [formGroup]="profileForm" *ngIf="!(isLoading$ | async)" >
     <div class="alert alert-danger" *ngIf="user_infos?.ecamtroc == null">
       <strong>Veuillez valider votre email pour mieux sécuriser votre compte.</strong> <a href="#"> ici </a>
     </div>
@@ -21,6 +21,6 @@
       <input class="form-control" id="Num" type="text" formControlName="phone"  placeholder="Numéro de téléphone"/>
     </div>
     <div class="form-group">
-      <button class="btn btn-round btn-b">Mettre à jour</button>
+      <button (click)="onUpdateProfile()" class="btn btn-round btn-b" >Mettre à jour</button>
     </div>
 </form>

@@ -2,7 +2,7 @@ import { Component, OnInit,Input} from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth.service';
 import { FormBuilder, FormGroup,Validators,FormControl } from "@angular/forms";
-import { TokenService } from '../../../shared/token.service';
+import { ToastrService } from 'ngx-toastr';
 import { AuthStateService } from '../../../shared/auth-state.service';
 import { Observable,BehaviorSubject } from 'rxjs';
 @Component({
@@ -19,7 +19,7 @@ export class FormProfileComponent implements OnInit {
  
   constructor(public router: Router,
     public fb: FormBuilder,
-    public authService: AuthService , public authState : AuthStateService) { 
+    public authService: AuthService , public authState : AuthStateService, private toast :ToastrService) { 
       this.isLoading$ = this.authService.isLoading$; 
       this.authState.userAuthState.subscribe(async(data:any)=>{
         this.isAuth$ = data;
@@ -61,16 +61,20 @@ export class FormProfileComponent implements OnInit {
   initFormProfile(){
     this.profileForm = this.fb.group({
       email: new FormControl({value: this.user_infos.email,disabled :true}, Validators.required),
-      firstname :[this.user_infos.firstname || "",Validators.required],
-      lastname:[this.user_infos.lastname || "",Validators.required],
-      schoolyear:[this.user_infos.schoolyear || "",Validators.required],
-      phone:[this.user_infos.phone || "",Validators.required],
+      firstname :[this.user_infos.firstname ,Validators.required],
+      lastname:[this.user_infos.lastname ,Validators.required],
+      schoolyear:[this.user_infos.schoolyear ,Validators.required],
+      phone:[this.user_infos.phone ,Validators.required],
       
     })
     
   }
 
   onUpdateProfile(){
-    //still to do
+    this.authService.updateProfile(this.profileForm.value).subscribe((data:any)=>{
+      if(data.status == 201 ){
+        console.log(data)
+      }
+    })
   }
 }

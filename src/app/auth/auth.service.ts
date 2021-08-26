@@ -46,6 +46,10 @@ export class AuthService {
     return this.http.get('http://127.0.0.1:8000/api/auth/user-profile',{observe: 'response'});
   }
 
+  updateProfile(data): Observable<any>{
+    return this.http.put('http://127.0.0.1:8000/api/auth/user-profile-update',data,{observe:'response'})
+  }
+
   sendResetPasswordLink(data) {
     return this.http.post('http://127.0.0.1:8000/api/auth/reset-password-request', data,{observe: 'response'})
   }

@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
     private toast : ToastrService
   ) { 
     this.isLoading$ = this.authService.isLoading$
-    console.log(this.token.isValidToken())
     this.authState.userAuthState.subscribe(async(data)=>{
       this.isAuth$ = data
       setTimeout(() => {

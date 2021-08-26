@@ -43,15 +43,7 @@ export class RegisterComponent implements OnInit {
                 password :this.registerForm.controls.password.value
               }
               setTimeout(() => {
-                this.authService.signin(creditentials).subscribe(
-                  result => {
-                    if(result.status==200){
-                      this.authService.profileInfoSubject.next(result.body.user_info)
-                    }
-                    this.responseHandler(result);
-                  }
-                );
-                this.router.navigateByUrl('/');
+                this.router.navigate(['/']);
               },1000 );
               
             }

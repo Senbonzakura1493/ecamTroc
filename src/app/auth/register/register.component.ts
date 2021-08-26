@@ -45,6 +45,9 @@ export class RegisterComponent implements OnInit {
               setTimeout(() => {
                 this.authService.signin(creditentials).subscribe(
                   result => {
+                    if(result.status==200){
+                      this.authService.profileInfoSubject.next(result.body.user_info)
+                    }
                     this.responseHandler(result);
                   }
                 );

@@ -1,9 +1,7 @@
 <section class="module-medium" style="background-color: white; padding-top : 120px;">
 <div class="container">
 <div class="row">
-<div class="spinner-border" role="status" *ngIf="(isLoading$|async)">
-  <span class="sr-only">Loading...</span>
-</div>
+
 <!-- if user not connected or doesn't have any profile-->
 <div class="alert alert-danger" *ngIf="!(isAuth$)" >
   <strong>Veuillez vous inscrire pour pouvoir poster une proposition</strong> 

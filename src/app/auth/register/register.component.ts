@@ -38,13 +38,10 @@ export class RegisterComponent implements OnInit {
           result => {
             if(result.status=201){
               this.toast.success("Compte créé avec succès ! ")
-              var creditentials = {
-                email :this.registerForm.controls.email.value,
-                password :this.registerForm.controls.password.value
-              }
               setTimeout(() => {
+                this.authService.isLoadingSubject.next(false);
                 this.router.navigate(['/']);
-              },1000 );
+              }, );
               
             }
           },

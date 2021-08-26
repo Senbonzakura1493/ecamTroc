@@ -22,13 +22,20 @@
           <div class="shop-item">
             <div class="card" >
               <div class="card-body" style="background-color: rgb(172, 171, 164)">
-                <h5 class="card-title">{{collab.course_id}}</h5>
+                <div  *ngFor="let course of courses">
+                  <h5 class="card-title"  *ngIf="course.id == collab.course_id">{{course.name}}</h5>
+                </div>
                 <p class="card-text">{{collab.description}}</p>
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">{{collab.hours}} heures</li>
                 <li class="list-group-item">Statut :  {{collab.status}}</li>
-                <li class="list-group-item">Année d'étude : {{collab.schoolyear_id}}</li>
+                <div  *ngFor="let scyear of schoolyears">
+                  <li class="list-group-item" *ngIf="scyear.id == collab.schoolyear_id">Année d'étude : {{scyear.name}}</li>
+                </div>
+                <div  *ngFor="let course of courses">
+                  <li class="list-group-item"  *ngIf="course.id == collab.course_two_id">troc : {{course.name}}</li>
+                </div>
               </ul>
               <div class="card-body">
                 <button type="submit" class="btn btn-outline-dark my-2 my-sm-0" >Détails </button>

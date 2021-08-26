@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup,Validators,FormControl } from "@angular/forms";
 import { TokenService } from '../../shared/token.service';
 import { AuthStateService } from '../../shared/auth-state.service';
 import { Observable,BehaviorSubject } from 'rxjs';
-
+import { ShopService } from 'src/app/shop/shop/shop.service';
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -21,9 +21,10 @@ export class UserProfileComponent implements OnInit {
   previous = false;
   collaborations : any;
   user_id:any;
-  
+  courses:any;
+  schoolyears:any;
   constructor(public router: Router,
-    public fb: FormBuilder,
+    public fb: FormBuilder,private shopserv: ShopService,
     public authService: AuthService, public authState :AuthStateService) {
       this.isLoading$ = this.authService.isLoading$; 
       this.authService.isLoadingSubject.next(true);
@@ -32,8 +33,14 @@ export class UserProfileComponent implements OnInit {
         if(data == true ){
           this.authService.getNextValueProfileInfos().subscribe((data:any)=>{
             if(data != undefined){
-              console.log(data)
               this.user_id = data.id;
+              this.shopserv.getNextValueCourses().subscribe(courses => {
+                this.courses = courses;
+               
+              } );
+              this.shopserv.getNextValueSchoolyears().subscribe(schoolyears => {
+                this.schoolyears = schoolyears;
+              } );
               this.authService.getUserCollaborations(this.user_id).subscribe(data=>{
                 if(data != null){
                 this.collaborations = data.body;     

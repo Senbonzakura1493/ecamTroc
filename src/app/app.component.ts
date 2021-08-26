@@ -8,6 +8,6 @@ import { ActivatedRoute } from '@angular/router';
 export class AppComponent {
   title = 'ecamtroc';
   constructor(private activroute :ActivatedRoute) { 
-    console.log(this.activroute)
+
   }
 }

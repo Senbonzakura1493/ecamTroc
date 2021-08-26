@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { TokenService } from '../../shared/token.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -12,7 +13,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   errors = null;
 
-  constructor(private token: TokenService,
+  constructor(private token: TokenService,private toast:ToastrService,
     public router: Router,
     public fb: FormBuilder,
     public authService: AuthService
@@ -32,7 +33,7 @@ export class RegisterComponent implements OnInit {
       this.authService.register(this.registerForm.value).subscribe(
         result => {
           if(result.status=201){
-            //toaster profil créé
+            this.toast.success("Compte créé avec succès ! ")
             var creditentials = {
               email :this.registerForm.controls.email.value,
               password :this.registerForm.controls.password.value
@@ -43,12 +44,13 @@ export class RegisterComponent implements OnInit {
                   this.responseHandler(result);
                 }
               );
-              this.router.navigate(['/']);
+              this.router.navigateByUrl('/');
             },1000 );
             
           }
         },
         error => {
+          this.toast.error("Une erreur est survenu")
           this.errors = error.error;
         },
         () => {

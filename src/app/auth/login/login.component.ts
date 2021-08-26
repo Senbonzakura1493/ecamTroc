@@ -57,16 +57,19 @@ export class LoginComponent implements OnInit {
     this.authService.isLoadingSubject.next(true);
     this.authService.signin(this.loginForm.value).subscribe(
       result => {
+        console.log(result)
+        if(result.status==200){
         this.profile_infos = result.body.user_info;
         this.authService.profileInfoSubject.next(result.body.user_info)
         this.responseHandler(result);
         setTimeout(() => {
           this.toast.success('Vous êtes connecté ! ');
         }, );
+        }
       },
       error => {
-        this.toast.error('une erreur est survenue')
         this.errors = error.error;
+        this.toast.error(this.errors.error)
       },() => {
         this.authState.setAuthState(true);
         this.loginForm.reset()

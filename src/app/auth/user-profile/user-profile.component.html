@@ -55,6 +55,9 @@
                 <div  *ngFor="let scyear of schoolyears">
                   <li class="list-group-item" *ngIf="scyear.id == collab.schoolyear_id">Année d'étude : {{scyear.name}}</li>
                 </div>
+                <div  *ngFor="let course of courses">
+                  <li class="list-group-item"  *ngIf="course.id == collab.course_two_id">troc : {{course.name}}</li>
+                </div>
               </ul>
               <div class="card-body">
                 <button type="submit" class="btn btn-outline-dark my-2 my-sm-0" >Détails </button>

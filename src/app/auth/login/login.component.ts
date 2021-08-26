@@ -30,18 +30,21 @@ export class LoginComponent implements OnInit {
     private toast : ToastrService
   ) { 
     this.isLoading$ = this.authService.isLoading$
-    this.authState.userAuthState.subscribe(async(data:boolean)=>{
-      this.isAuth$ = data;
+    console.log(this.token.isValidToken())
+    this.authState.userAuthState.subscribe(async(data)=>{
+      this.isAuth$ = data
       setTimeout(() => {
-        if(this.isAuth$ == true  && this.fromCheckout == undefined){
+        if(this.token.isLoggedIn()){
           this.router.navigateByUrl('/user-profile')
         }
-        // si je suis connecté et que je viens du checkout idem 
-        this.authService.getNextValueProfileInfos().subscribe(async (data:any)=>{
-          if(this.isAuth$ == true  && data != undefined && this.fromCheckout == undefined){
-            this.router.navigateByUrl('/user-profile')
-          }
-      })
+        else {
+          this.authService.logout().subscribe(data=>{
+            if(data){
+              this.router.navigateByUrl('/login')
+            }
+          })
+        }
+   
       }, );   
     });
     this.loginForm = this.fb.group({
@@ -81,9 +84,7 @@ export class LoginComponent implements OnInit {
   // Handle response
   responseHandler(data){
     this.token.handleData(data.body.access_token);
-    if(this.fromCheckout == true){
-      this.router.navigate[('/checkout')];
-    }
+    
   }
 
   onRegister(){

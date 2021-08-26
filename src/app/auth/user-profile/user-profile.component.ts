@@ -24,13 +24,13 @@ export class UserProfileComponent implements OnInit {
   courses:any;
   schoolyears:any;
   constructor(public router: Router,
-    public fb: FormBuilder,
+    public fb: FormBuilder,private token :TokenService,
     public authService: AuthService, public authState :AuthStateService,private shopServ : ShopService) {
       this.isLoading$ = this.authService.isLoading$; 
       this.authService.isLoadingSubject.next(true);
       this.authState.userAuthState.subscribe(async(data:boolean)=>{
         this.isAuth$ = data;
-        if(data == true ){
+        if(data == true && this.token.isValidToken()){
           this.authService.getNextValueProfileInfos().subscribe((data:any)=>{
             if(data != undefined){
               this.user_id = data.id;
@@ -39,7 +39,6 @@ export class UserProfileComponent implements OnInit {
                 this.collaborations = data.body;
                 this.shopServ.getNextValueCourses().subscribe(courses => {
                   this.courses = courses;
-                 
                 } );
                 this.shopServ.getNextValueSchoolyears().subscribe(schoolyears => {
                   this.schoolyears = schoolyears;
@@ -47,7 +46,7 @@ export class UserProfileComponent implements OnInit {
                 } 
               })
             }
-           })       
+           })      
         }
         
       })

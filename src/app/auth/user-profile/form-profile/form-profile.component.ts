@@ -26,8 +26,7 @@ export class FormProfileComponent implements OnInit {
         if(this.isAuth$ == true){
           this.authService.getNextValueProfileInfos().subscribe((data:any)=>{
             this.user_infos = data;
-           
-            if(data != undefined){
+            if(data){
                 this.initFormProfile();
                 setTimeout(() => {
                   this.authService.isLoadingSubject.next(false)

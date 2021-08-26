@@ -20,7 +20,7 @@ export class ShopService {
     this.courses$ = this.coursesSubject.asObservable();
   }
 
-   // get all collaborations from api 
+   // get all schoolyears and courses from api 
   APIgetSchoolyears(): Observable<any> {
     return this.http.get('http://127.0.0.1:8000/api/schoolyears',{observe: 'response'});
   }

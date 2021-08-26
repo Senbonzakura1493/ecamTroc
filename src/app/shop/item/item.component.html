@@ -1,106 +1,54 @@
-<!doctype html>
-<div class="page-loader" *ngIf="(isLoading$ |async)">
-  <div class="loader">Loading...</div>
-</div>
-<div style="background-color: whitesmoke; padding-top : 110px;" *ngIf='!(isLoading$ | async)'>
-<div class="row d-none d-lg-block">
-
-<div class="container" style="padding-top:15px;">
-  <div class="row">
-    <div class="col"  style="text-align:left; max-width:20%;" >
-      <h4 class="font-alt">{{item.nom}} </h4><br/>
-    </div>
-    <div class="col" >
-      <div class="row">
-      <div  class="col" style="text-align:left; width:70%;" >
-        <button  class="btn btn-outline-dark btn-xs">1h</button>&nbsp;
-        <button  class="btn btn-outline-dark btn-xs">2h</button>&nbsp;
-        <button  class="btn btn-outline-dark btn-xs">3h</button>&nbsp;
-        <button  class="btn btn-outline-dark btn-xs ">4h</button>&nbsp;
-        
-      </div>
-      <div class="col" style="text-align:center; width:10%;" >
-        <span *ngFor= "let item of items"  >
-          <a class="dot" href="/#" style="background-color: black;"></a>
-          <span class="dot"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-        </span>
-      </div>   
-      <div  class="col" style="text-align:center; width:20%;">
-        <button class="btn btn-md  btn-round btn-b" style="padding-top: 5px;" (click)="addToCart(item)" >Match</button>&nbsp;<br>
-      </div>
-    </div>
-    </div>
- </div>
- <hr class="solid">
-</div>
-</div>
-
-
-<div class="d-lg-none">
-    <div class="container" style=" background-color :white ; padding-top:15px;">
-    <div class="row">
-      <div class="col" style="text-align:left;" >
-        <div class="row">
-        <div  class="col" >
-          <button  class=" button-size  btn-outline-dark  titan-title-size-1" >XS</button>&nbsp;
-          <button  class=" button-size  btn-outline-dark titan-title-size-1 " >S</button>&nbsp;
-          <button  class=" button-size  btn-outline-dark titan-title-size-1" >M</button>&nbsp;
-          <button  class=" button-size  btn-outline-dark titan-title-size-1" >L</button>&nbsp;
-          <button  class=" button-size  btn-outline-dark titan-title-size-1"  >XL</button>&nbsp;
-        </div>
-        <div  class="col" style="text-align:center; width:30%;">
-          <button class="btn btn-round btn-b" style="width:100%; height:100%;" type="submit">Buy</button>&nbsp;<br>
-        </div>
-      </div>
-      <div style="text-align:left;" >
-        <span *ngFor= "let item of items"  >
-          <a class="dot" href="/#" style="background-color: black;"></a>
-          <span class="dot"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-        </span>
-        
-      </div>   
-      </div>
-   </div>
-   <hr class="solid">
-</div>
-</div>
-<section class="module-small" >
+<section class="module-medium" style="background-color: white; padding-top : 120px;">
   <div class="container">
-    <div class="row d-lg-none"  style=" text-align:left;" >
-      <div class="col-sm-6">
-      <h4 class="font-alt">{{item.nom}} </h4><br/>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-6">
-        <h5 class="font-alt">Description</h5><br/>
-        <p class="font-alt" >{{item.description}}</p>
-      </div>
-      <div class="col-sm-6">
-        <div class="card" >
-          <div class="card-header">
-            <h5 class="font-alt"><i class="fa fa-truck fa-2x"></i>&nbsp;Livraison et Retour</h5>
-          </div>
-          <div class="card-body">
-            <div class = "col">
-            <blockquote class="blockquote">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-              <footer class="blockquote">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-            </blockquote>
-            </div>
-            <div class = "col">
-              <blockquote class="blockquote">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                <footer class="blockquote">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-              </blockquote>
-              </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="row">
+  <div class="spinner-border" role="status" *ngIf="(isLoading$|async)">
+    <span class="sr-only">Loading...</span>
   </div>
-</section>
+  <!-- if user not connected or doesn't have any profile-->
+  <div class="alert alert-danger" *ngIf="!(isAuth$)" >
+    <strong>Veuillez vous connecter/inscrire pour pouvoir matcher avec un camarade</strong> 
+  </div>
+  </div>
+  <div *ngIf="!(isAuth$)">
+      <app-login></app-login>
+  </div>  
+  
+  <form class="form" *ngIf="!(isLoading$|async) && (isAuth$) && collab" (ngSubmit)="submitCollab()">
+    <div class="form-group">
+      <label>J'aurais besoin d'aide en :</label>
+      <div  *ngFor="let course of courses">
+        <li class="list-group-item" *ngIf="course.id == collab.course_id"> {{course.name}}</li>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Contre des cours en :</label>
+      <div  *ngFor="let course of courses">
+        <li class="list-group-item" *ngIf="course.id == collab.course_two_id"> {{course.name}}</li>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Nombre d'heures :</label>
+      <li class="list-group-item"   >{{collab.hours}}</li>
+    </div>
+    <div class="form-group">
+      <label>Année d'étude:</label>
+      <div  *ngFor="let scyear of schoolyears">
+        <li class="list-group-item" *ngIf="scyear.id == collab.schoolyear_id"> {{scyear.name}}</li>
+      </div>
+    </div>
+    <div class="form-group">
+      <li class="list-group-item"   >{{collab.description}}</li>
+    </div>
+    <div class="form-group">
+      <button type="submit"  class="btn btn-round btn-b">Prendre cette collaboration</button>
+    </div>
+    <div class="form-group">
+      <a routerLink="/collaborations">retour aux collaborations</a>
+    </div>
+  </form>
+  </div>
+  </section>
+      
+  
+  
+  

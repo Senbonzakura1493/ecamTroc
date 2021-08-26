@@ -18,19 +18,28 @@
     <strong>Complète toutes les informations avant de valider ta proposition</strong>
   </div>
   <div class="form-group">
+    <label>J'aurais besoin d'aide en :</label>
     <select  class="form-control" formControlName="course_id" placeholder="Cours pour lequel tu as besoin d'aide">
       <option *ngFor="let x of courses" [ngValue]="x.id" [selected]="course_two_id == x.id" >{{x.name}}</option>
     </select>
   </div>
   <div class="form-group">
+    <label>Contre des cours en :</label>
     <select  class="form-control" formControlName="course_two_id" placeholder="Le cours que tu propose en échange">
       <option *ngFor="let x of courses" [ngValue]="x.id" [selected]="course_two_id == x.id" >{{x.name}}</option>
     </select>
   </div>
   <div class="form-group">
-    <input class="form-control"   type="text"  formControlName="hours" placeholder="nombre d'heures"/>
+    <label>Nombre d'heures :</label>
+    <select class="form-control"   type="text"  formControlName="hours" placeholder="nombre d'heures">
+        <option> 1 </option>
+        <option> 2 </option>
+        <option> 3 </option>
+        <option> 4 </option>
+    </select>
   </div>
   <div class="form-group">
+    <label>Année d'étude:</label>
     <select  class="form-control" formControlName="schoolyear_id" placeholder="Année d'étude">
       <option *ngFor="let x of schoolyears" [ngValue]="x.id" [selected]="schoolyear_id == x.id" >{{x.name}}</option>
     </select>

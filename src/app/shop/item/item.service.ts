@@ -11,25 +11,22 @@ export class ItemService {
   isLoadingSubject: BehaviorSubject<boolean>;
   isLoading$: Observable<boolean>;
 
-  itemSubject: BehaviorSubject<any>;
-  item$: Observable<any>;
+  collabSubject: BehaviorSubject<any>;
+  collab$: Observable<any>;
 
-  itemsSubject: BehaviorSubject<any>;
-  items$: Observable<any>;
   
   constructor(private http: HttpClient) { 
     this.isLoadingSubject = new BehaviorSubject<boolean>(false);
     this.isLoading$ = this.isLoadingSubject.asObservable();
 
-    this.itemSubject = new BehaviorSubject<any>(undefined);
-    this.item$= this.itemSubject.asObservable();
+    this.collabSubject = new BehaviorSubject<any>(undefined);
+    this.collab$= this.collabSubject.asObservable();
 
-    this.itemsSubject = new BehaviorSubject<any>(undefined);
-    this.items$ = this.itemsSubject.asObservable();
+ 
   }
 
    // get one item from api and the same item in the other colors. 
-   APIgetItem(id): Observable<any> {
-    return this.http.get('http://127.0.0.1:8000/api/items/'+ id,{observe: 'response'});
+   APIUpdateCollab(id,data): Observable<any> {
+    return this.http.put('http://127.0.0.1:8000/api/collaborations/'+ id,data,{observe: 'response'});
   }
 }

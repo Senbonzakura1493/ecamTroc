@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { PropositionService } from './proposition.service';
 import { ToastrService } from 'ngx-toastr'; 
 import { ShopService } from '../shop/shop.service';
+import { BoutiqueServiceService } from '../boutique/boutique-service.service';
 @Component({
   selector: 'app-proposition',
   templateUrl: './proposition.component.html',
@@ -21,7 +22,7 @@ export class PropositionComponent implements OnInit {
   courses :any;
   schoolyears :any;
   constructor(private toastr: ToastrService,public router: Router,
-    public fb: FormBuilder,
+    public fb: FormBuilder,private boutiqueService : BoutiqueServiceService,
     public authService: AuthService , public authState : AuthStateService, private propositionService : PropositionService, private shopserv : ShopService) { 
       this.isLoading$ = this.authService.isLoading$; 
       this.authService.isLoadingSubject.next(true);
@@ -66,7 +67,15 @@ export class PropositionComponent implements OnInit {
       result => {
        if(result.status == 201){
          this.toastr.success("Ta proposition a bien été ajoutée")
-         this.router.navigateByUrl('/collaborations')
+         this.boutiqueService.APIgetItems().subscribe(async(data:any)=>{
+          if(data.status==200){
+            this.boutiqueService.itemsSubject.next(data.body.collaborations);
+          }
+        })
+        setTimeout(() => {
+          this.router.navigateByUrl('/collaborations')
+        }, );
+        
        }
       },
       error => {

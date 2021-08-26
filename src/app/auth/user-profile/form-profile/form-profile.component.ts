@@ -73,8 +73,11 @@ export class FormProfileComponent implements OnInit {
   onUpdateProfile(){
     this.authService.updateProfile(this.profileForm.value).subscribe((data:any)=>{
       if(data.status == 201 ){
-        console.log(data)
+        this.toast.success('profile mis à jours ! ')
       }
-    })
+      
+    },error => {
+      this.toast.error('Une erreur est survenue lors de la mise à jours.')
+    },)
   }
 }

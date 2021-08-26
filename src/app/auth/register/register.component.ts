@@ -29,36 +29,42 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    if(this.registerForm.value){
-      this.authService.register(this.registerForm.value).subscribe(
-        result => {
-          if(result.status=201){
-            this.toast.success("Compte créé avec succès ! ")
-            var creditentials = {
-              email :this.registerForm.controls.email.value,
-              password :this.registerForm.controls.password.value
-            }
-            setTimeout(() => {
-              this.authService.signin(creditentials).subscribe(
-                result => {
-                  this.responseHandler(result);
-                }
-              );
-              this.router.navigateByUrl('/');
-            },1000 );
-            
-          }
-        },
-        error => {
-          this.toast.error("Une erreur est survenu")
-          this.errors = error.error;
-        },
-        () => {
-          this.registerForm.reset()
-          this.router.navigate(['login']);
-        }
-      )
+    if(this.registerForm.value.password.length < 6){
+      this.toast.warning("Le mot de passe doit faire plus de 6 caractères")
     }
+    else {
+      if(this.registerForm.value){
+        this.authService.register(this.registerForm.value).subscribe(
+          result => {
+            if(result.status=201){
+              this.toast.success("Compte créé avec succès ! ")
+              var creditentials = {
+                email :this.registerForm.controls.email.value,
+                password :this.registerForm.controls.password.value
+              }
+              setTimeout(() => {
+                this.authService.signin(creditentials).subscribe(
+                  result => {
+                    this.responseHandler(result);
+                  }
+                );
+                this.router.navigateByUrl('/');
+              },1000 );
+              
+            }
+          },
+          error => {
+            this.toast.error("Une erreur est survenu")
+            this.errors = error.error;
+          },
+          () => {
+            this.registerForm.reset()
+            this.router.navigate(['login']);
+          }
+        )
+      }
+    }
+   
     
   }
   // Handle response

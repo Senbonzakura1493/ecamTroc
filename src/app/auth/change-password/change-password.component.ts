@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import {ActivatedRoute} from '@angular/router';
 import { AuthService } from '../auth.service';
 import { throwError } from 'rxjs';
 import { Router } from '@angular/router';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-change-password',
   templateUrl: './change-password.component.html',
@@ -17,12 +17,12 @@ export class ChangePasswordComponent implements OnInit {
     public router: Router,
     public fb: FormBuilder,
     route: ActivatedRoute,
-    public authService: AuthService,
+    public authService: AuthService,private toast : ToastrService
   ) { 
     this.changePasswordForm = this.fb.group({
-      email: [''],
-      password: [''],
-      password_confirmation: [''],
+      email: ['',Validators.required],
+      password: ['',Validators.required],
+      password_confirmation: ['',Validators.required],
       passwordToken: ['']
     })
     route.queryParams.subscribe((params) => {
@@ -36,11 +36,12 @@ export class ChangePasswordComponent implements OnInit {
   onSubmit(){
     this.authService.resetPassword(this.changePasswordForm.value).subscribe(
       result => {
-        alert('Password has been updated');
+        this.toast.success('Password has been updated');
         this.changePasswordForm.reset();
         this.router.navigate(['/login']);
       },
       error => {
+        this.toast.error('Une erreur est survenue')
         this.handleError(error);
       }
     );

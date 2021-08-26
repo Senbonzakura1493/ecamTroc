@@ -70,9 +70,12 @@ export class FormProfileComponent implements OnInit {
   }
 
   onUpdateProfile(){
+    this.authService.isLoadingSubject.next(true);
     this.authService.updateProfile(this.profileForm.value).subscribe((data:any)=>{
       if(data.status == 201 ){
+        this.authService.profileInfoSubject.next(data.body.user_info)
         this.toast.success('profile mis à jours ! ')
+        this.authService.isLoadingSubject.next(false);
       }
       
     },error => {
